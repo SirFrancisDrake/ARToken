@@ -43,6 +43,16 @@ contract Cappasity is StandardToken {
     super.approve(_spender, _value);
   }
 
+  function increaseApproval (address _spender, uint _addedValue) public returns (bool) {
+    require(!tokensAreFrozen);
+    super.increaseApproval(_spender, _addedValue);
+  }
+
+  function decreaseApproval (address _spender, uint _subtractedValue) public returns (bool) {
+    require(!tokensAreFrozen);
+    super.decreaseApproval(_spender, _subtractedValue);
+  }
+
   // PRIVILEGED FUNCTIONS
   // ====================
   modifier onlyByManager() {
